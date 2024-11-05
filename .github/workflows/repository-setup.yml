@@ -1,0 +1,886 @@
+name: Repository Setup and Issue Publishing
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+     - cron: '0 * * * *' # 每小时的第一分钟运行一次
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  create_folders_and_readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create folders and README.md based on keywords
+        run: |
+          while IFS= read -r keyword; do
+            # 使用 tr 和 iconv 确保正确处理中文字符
+            sanitized_keyword=$keyword
+            echo "Processing sanitized keyword: '$sanitized_keyword'"
+            mkdir -p "$sanitized_keyword"
+
+            # 复制根目录的 index.html 到该文件夹
+            cp index.html "$sanitized_keyword/index.html"
+
+            echo "# ${sanitized_keyword}" > "${sanitized_keyword}/README.md"
+            echo "" >> "${sanitized_keyword}/README.md"
+            echo "# [🍉⎝⎛点击进入⎞⎠🍉](https://kkdd668.cn)">> "${sanitized_keyword}/README.md"
+            echo "## ${sanitized_keyword}" >> "${sanitized_keyword}/README.md"
+            echo "${sanitized_keyword}是一家专注于体育赛事的在线娱乐提供商提供体育赛事直播投注、真人娱乐、棋牌、电竞等，网站注重用户体验，提供便捷的注册和登录，支持多平台和多设备的访问${sanitized_keyword}邀您每日观五大联赛领豪礼，每日每场皆有奖，请点击下面注册入口进行查看~" >> "${sanitized_keyword}/README.md"
+            echo "# [🍉⎝⎛点击进入⎞⎠🍉](https://kkdd668.cn)">> "${sanitized_keyword}/README.md"
+            echo "" >> "${sanitized_keyword}/README.md"
+            echo "## 特点" >> "${sanitized_keyword}/README.md"
+            echo "- 一.品牌效应带来安全保障: ${sanitized_keyword}是备受华人信赖的知名品牌，其口碑卓越，深受华人的赞誉。${sanitized_keyword}在大规模的赞助活动中展现了其实力，与AC米兰足球俱乐部、国际米兰足球俱乐部、切尔西足球俱乐部等知名品牌建立了紧密的战略合作关系。使${sanitized_keyword}成为业内领先者，更为用户提供了可靠、安全的保障，对${sanitized_keyword}品牌充满信心。" >> "${sanitized_keyword}/README.md"
+            echo "- 二.优良的服务: 平台致力于为用户提供优质的体育服务，并提供多样化的体育项目选择。平台还提供奖励活动和赛事直播，为用户带来更多的娱乐和收益。我们一直致力于为广大体育爱好者提供专业、高品质的服务，希望用户在平台上享受到真正的乐趣。" >> "${sanitized_keyword}/README.md"
+            echo "- 三.高额的优惠: ${sanitized_keyword}是一个占据着市场主导地位的服务提供商，为社会提供各种娱乐服务。平台不定期推出各种优惠活动，比如首存优惠、返利活动、充值送礼等等，让玩家在游戏中获得更多的奖励和回报。这一经营理念与我们已经取得的成功相辅相成。" >> "${sanitized_keyword}/README.md"
+            echo "" >> "${sanitized_keyword}/README.md"
+            echo "## 为什么选择${sanitized_keyword}？" >> "${sanitized_keyword}/README.md"
+            echo "${sanitized_keyword}是一家全球领先的在线游戏平台，拥有丰富的游戏种类和优质的服务体验。包括电子游戏、真人游戏、彩票游戏等，能够满足不同玩家的需求。其次，${sanitized_keyword}平台致力于为玩家提供最好的服务体验，以及安全稳定的游戏环境。" >> "${sanitized_keyword}/README.md"
+            echo "## 产品相关" >> "${sanitized_keyword}/README.md"
+            echo "- ${sanitized_keyword}网页版：${sanitized_keyword}网页版为用户提供全方位的服务，友好的界面和流畅的操作体验，支持多平台访问，随时随地都能享受到最新最热门的体育和娱乐游戏。对于部分海外地区的用户，可能需要使用VPN才能访问${sanitized_keyword}网站。" >> "${sanitized_keyword}/README.md"
+            echo "- ${sanitized_keyword}体育App：提供业内最高赔率，覆盖世界各地的赛事，可供用户进行多元竞猜，如让球、大小、半全场、波胆等多种玩法。此外，平台还提供动画直播功能，让用户轻松地观看比赛，同时也可以进行娱乐投注，两者兼顾，尽享乐趣。" >> "${sanitized_keyword}/README.md"
+            echo "- ${sanitized_keyword}全站App：全站App是一款专门为体育爱好者和游戏玩家设计的应用程序，具备流畅的操作和良好的用户体验。用户可以在应用中畅玩海量的体育、电竞顶尖赛事、真人娱乐、彩票投注和电子游艺等娱乐项目。" >> "${sanitized_keyword}/README.md"
+            echo "- <https://h5-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://blog-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pc-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://cn-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://3g-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://5g-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://biyisports-h5.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://biyisports-work.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://biyisports-net.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://biyisports-pc.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://blog-ayxsport.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pc-ayxsport.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ayxsports-wb.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ayxsports-ios.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ios-ayxsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://mi-ayxsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ai-ayxsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ayxsports-pro.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ayxsports-min.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ayxsports-max.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://mi-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ios-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pro-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://max-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://games-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pop-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://min-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://blog-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://net-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://apps-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://games-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://min-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pro-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://max-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ios-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ios-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pro-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://max-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://min-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ty-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://games-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ios-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://min-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://max-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://mini-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://bi-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pro-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://site-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ty-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://max-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://on-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://mini-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://blog-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://tiyu-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pro-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://3g-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://5g-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://in-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://on-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://at-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://at-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://in-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://mini-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://max-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pro-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://tiyu-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://cq-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://5g-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://h5-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ios-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://max-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://play-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://games-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://apps-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://tiyu-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pro-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://web-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://home-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://5g-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://qmhsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ios-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://cn-qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://zh-qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pro-qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://qmh-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ty-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://web-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://on-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://in-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://5g-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://tiyu-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://play-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://h5-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://games-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://qyh-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ios-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://qianyi-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ok-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://sty-xingkong.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://on-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://xk-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://tiyu-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://h5-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://zh-xingkong.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://xingkong-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://on-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ios-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://in-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ok-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ok-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ios-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://pro-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://max-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://min-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://tiyu-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://games-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://ai-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://on-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://good-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.h5-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.blog-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pc-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.cn-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.3g-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.5g-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.biyisports-h5.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.biyisports-work.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.biyisports-net.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.biyisports-pc.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.blog-ayxsport.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pc-ayxsport.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ayxsports-wb.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ayxsports-ios.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ios-ayxsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.mi-ayxsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ai-ayxsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ayxsports-pro.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ayxsports-min.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ayxsports-max.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.mi-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ios-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pro-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.max-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.games-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pop-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.min-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.blog-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.net-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.apps-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.games-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.min-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pro-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.max-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ios-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ios-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pro-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.max-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.min-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ty-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.games-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ios-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.min-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.max-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.mini-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.bi-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pro-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.site-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ty-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.max-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.on-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.mini-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.blog-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.tiyu-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pro-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.3g-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.5g-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.in-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.on-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.at-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.at-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.in-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.mini-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.max-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pro-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.tiyu-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.cq-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.5g-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.h5-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ios-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.max-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.play-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.games-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.apps-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.tiyu-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pro-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.web-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.home-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.5g-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.qmhsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ios-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.cn-qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.zh-qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pro-qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.qmh-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ty-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.web-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.on-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.in-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.5g-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.tiyu-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.play-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.h5-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.games-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.qyh-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ios-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.qianyi-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ok-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.sty-xingkong.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.on-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.xk-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.tiyu-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.h5-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.zh-xingkong.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.xingkong-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.on-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ios-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.in-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ok-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ok-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ios-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.pro-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.max-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.min-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.tiyu-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.games-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.ai-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.on-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://www.good-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.h5-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.blog-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pc-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.cn-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.3g-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.5g-biyisports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.biyisports-h5.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.biyisports-work.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.biyisports-net.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.biyisports-pc.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.blog-ayxsport.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pc-ayxsport.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ayxsports-wb.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ayxsports-ios.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ios-ayxsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.mi-ayxsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ai-ayxsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ayxsports-pro.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ayxsports-min.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ayxsports-max.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.mi-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ios-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pro-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.max-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.games-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pop-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.min-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.blog-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.net-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.apps-bobsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.games-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.min-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pro-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.max-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ios-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ios-bandaotiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pro-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.max-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.min-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ty-bandaosports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.games-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ios-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.min-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.max-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.mini-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.bi-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pro-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.site-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ty-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.max-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.on-bsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.mini-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.blog-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.tiyu-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pro-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.3g-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.5g-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.in-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.on-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.at-hthsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.at-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.in-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.mini-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.max-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pro-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.tiyu-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.cq-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.5g-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.h5-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ios-jnsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.max-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.play-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.games-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.apps-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.tiyu-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pro-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.web-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.home-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.5g-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.qmhsports.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ios-tanqiuba.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.cn-qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.zh-qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pro-qmhtiyu.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.qmh-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ty-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.web-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.on-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.in-qiumenghui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.5g-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.tiyu-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.play-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.h5-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.games-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.qyh-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ios-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.qianyi-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ok-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.sty-xingkong.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.on-qiuyouhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.xk-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.tiyu-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.h5-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.zh-xingkong.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.xingkong-starsty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.on-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ios-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.in-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ok-starrysty.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ok-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ios-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.pro-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.max-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.min-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.tiyu-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.games-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.ai-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.on-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+            echo "- <https://m.good-jinnianhui.com>" >> "${sanitized_keyword}/README.md"
+          done < keywords/3.txt
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Add GitHub Actions workflow and keywords folder" || echo "No changes to commit"
+          git push origin main
+
+  publish_issues:
+    runs-on: ubuntu-latest
+    needs: create_folders_and_readme
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get install gh -y
+
+      - name: Publish unique issues based on keywords
+        run: |
+          gh auth login --with-token <<< ${{ secrets.GITHUB_TOKEN }}
+          echo "Reading keywords from file..."
+          cat keywords/3.txt
+          cat keywords/4.txt
+
+          repos=$(gh repo list ${{ github.repository_owner }} --limit 100 --json name --jq '.[] | .name')
+          # 将所有仓库放入一个数组中
+          repos_array=($repos)
+          
+          # 随机选择 10 个关键词
+          awk 'BEGIN {srand()} !/^$/ {lines[NR]=$0} END {for (i=1; i<=10; i++) {print lines[int(rand()*NR)+1]}}' keywords/4.txt > random_keywords.txt
+          
+          #主页链接
+          random_links=()
+          for (( i=1; i<=10; i++ )); do
+              # 每次随机选择一个仓库名
+              random_repo=${repos_array[$RANDOM % ${#repos_array[@]}]}
+              random_links+=("<https://${{ github.repository_owner }}.github.io/$random_repo>")
+          done
+          
+          # 将生成的链接输出以供调试
+          for link in "${random_links[@]}"; do
+            echo "Generated link: $link"
+          done
+
+          #分页链接
+          random_flinks=()
+          random_plinks=()
+          # 逐行读取 3.txt 中的随机行到 random_keywords 数组中
+          mapfile -t random_keywords < <(shuf -n 10 ./keywords/3.txt)
+
+          # 函数：将特殊字符进行 URL 编码
+          url_encode() {
+              local string="${1}"
+              # 使用 sed 替换特殊字符
+              echo "$string" | sed -e 's/ /%20/g' -e 's/|/%7C/g'
+          }
+
+          # 循环生成分页链接
+          for (( i=0; i<10; i++ )); do
+              random_keyword="${random_keywords[$i]}"
+
+              # 确保 random_keyword 不为空
+              if [[ -n "$random_keyword" ]]; then
+                  # 对关键字进行 URL 编码
+                  encoded_keyword=$(url_encode "$random_keyword")
+                  # 判断是否 repository_owner.github.io 和 repository.name 相同
+                  if [[ "${{ github.repository_owner }}.github.io" == "${{ github.event.repository.name }}" ]]; then
+                      # 如果相同，执行另一种链接的拼接
+                      random_flinks+=("<https://${{ github.repository_owner }}.github.io/$encoded_keyword>")
+                  else
+                      # 否则使用常规拼接方式
+                      random_flinks+=("<https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/$encoded_keyword>")
+                  fi
+                  random_plinks+=("<https://${{ github.event.repository.name }}.pages.dev/$encoded_keyword>")
+              fi
+          done
+
+          # 将生成的链接输出以供调试
+          for link in "${random_flinks[@]}"; do
+            echo "Generated link: $link"
+          done
+
+          cat keywords/4.txt | sort | uniq | while IFS= read -r keyword; do
+            echo "Processing keyword: $keyword"
+
+            # 将随机关键词列表格式化为字符串
+            random_keywords_str=$(awk '{printf "%s, ", $0}' random_keywords.txt | sed 's/, $//')
+
+            existing_issue=$(gh issue list --search "Issue: $keyword" --json title --jq '.[] | select(.title == "Issue: $keyword") | .title')
+
+            if [ -z "$existing_issue" ]; then
+              echo "Creating issue for keyword: $keyword"
+              gh issue create                 --title "$keyword"                 --body "# ${keyword}
+       
+            ## ${keyword}
+   
+            ${keyword}是一家专注于体育赛事的在线娱乐提供商提供体育赛事直播投注、真人娱乐、棋牌、电竞等，网站注重用户体验，提供便捷的注册和登录，支持多平台和多设备的访问${keyword}邀您每日观五大联赛领豪礼，每日每场皆有奖，请点击下面注册入口进行查看~
+    
+            ${keyword}网页版：${keyword}网页版为用户提供全方位的服务，友好的界面和流畅的操作体验，支持多平台访问，随时随地都能享受到最新最热门的体育和娱乐游戏。对于部分海外地区的用户，可能需要使用VPN才能访问${keyword}网站。
+            
+            ${keyword}体育App：提供业内最高赔率，覆盖世界各地的赛事，可供用户进行多元竞猜，如让球、大小、半全场、波胆等多种玩法。此外，平台还提供动画直播功能，让用户轻松地观看比赛，同时也可以进行娱乐投注，两者兼顾，尽享乐趣。
+            
+            ${keyword}全站App：全站App是一款专门为体育爱好者和游戏玩家设计的应用程序，具备流畅的操作和良好的用户体验。用户可以在应用中畅玩海量的体育、电竞顶尖赛事、真人娱乐、彩票投注和电子游艺等娱乐项目。
+            
+            【Tag:】$random_keywords_str
+
+            ### 相关推荐：
+
+            <https://h5-biyisports.com>
+            <https://blog-biyisports.com>
+            <https://pc-biyisports.com>
+            <https://cn-biyisports.com>
+            <https://3g-biyisports.com>
+            <https://5g-biyisports.com>
+            <https://biyisports-h5.com>
+            <https://biyisports-work.com>
+            <https://biyisports-net.com>
+            <https://biyisports-pc.com>
+            <https://blog-ayxsport.com>
+            <https://pc-ayxsport.com>
+            <https://ayxsports-wb.com>
+            <https://ayxsports-ios.com>
+            <https://ios-ayxsports.com>
+            <https://mi-ayxsports.com>
+            <https://ai-ayxsports.com>
+            <https://ayxsports-pro.com>
+            <https://ayxsports-min.com>
+            <https://ayxsports-max.com>
+            <https://mi-bobsports.com>
+            <https://ios-bobsports.com>
+            <https://pro-bobsports.com>
+            <https://max-bobsports.com>
+            <https://games-bobsports.com>
+            <https://pop-bobsports.com>
+            <https://min-bobsports.com>
+            <https://blog-bobsports.com>
+            <https://net-bobsports.com>
+            <https://apps-bobsports.com>
+            <https://games-bandaotiyu.com>
+            <https://min-bandaotiyu.com>
+            <https://pro-bandaotiyu.com>
+            <https://max-bandaotiyu.com>
+            <https://ios-bandaosports.com>
+            <https://ios-bandaotiyu.com>
+            <https://pro-bandaosports.com>
+            <https://max-bandaosports.com>
+            <https://min-bandaosports.com>
+            <https://ty-bandaosports.com>
+            <https://games-bsports.com>
+            <https://ios-bsports.com>
+            <https://min-bsports.com>
+            <https://max-bsports.com>
+            <https://mini-bsports.com>
+            <https://bi-bsports.com>
+            <https://pro-bsports.com>
+            <https://site-bsports.com>
+            <https://ty-bsports.com>
+            <https://max-hthsports.com>
+            <https://on-bsports.com>
+            <https://mini-hthsports.com>
+            <https://blog-hthsports.com>
+            <https://tiyu-hthsports.com>
+            <https://pro-hthsports.com>
+            <https://3g-hthsports.com>
+            <https://5g-hthsports.com>
+            <https://in-hthsports.com>
+            <https://on-hthsports.com>
+            <https://at-hthsports.com>
+            <https://at-jnsports.com>
+            <https://in-jnsports.com>
+            <https://mini-jnsports.com>
+            <https://max-jnsports.com>
+            <https://pro-jnsports.com>
+            <https://tiyu-jnsports.com>
+            <https://cq-jnsports.com>
+            <https://5g-jnsports.com>
+            <https://h5-jnsports.com>
+            <https://ios-jnsports.com>
+            <https://max-tanqiuba.com>
+            <https://play-tanqiuba.com>
+            <https://games-tanqiuba.com>
+            <https://apps-tanqiuba.com>
+            <https://tiyu-tanqiuba.com>
+            <https://pro-tanqiuba.com>
+            <https://web-tanqiuba.com>
+            <https://home-tanqiuba.com>
+            <https://5g-tanqiuba.com>
+            <https://qmhsports.com>
+            <https://ios-tanqiuba.com>
+            <https://qmhtiyu.com>
+            <https://cn-qmhtiyu.com>
+            <https://zh-qmhtiyu.com>
+            <https://pro-qmhtiyu.com>
+            <https://qmh-qiumenghui.com>
+            <https://ty-qiumenghui.com>
+            <https://web-qiumenghui.com>
+            <https://on-qiumenghui.com>
+            <https://in-qiumenghui.com>
+            <https://5g-qiuyouhui.com>
+            <https://tiyu-qiuyouhui.com>
+            <https://play-qiuyouhui.com>
+            <https://h5-qiuyouhui.com>
+            <https://games-qiuyouhui.com>
+            <https://qyh-qiuyouhui.com>
+            <https://ios-qiuyouhui.com>
+            <https://qianyi-qiuyouhui.com>
+            <https://ok-qiuyouhui.com>
+            <https://sty-xingkong.com>
+            <https://on-qiuyouhui.com>
+            <https://xk-starsty.com>
+            <https://tiyu-starsty.com>
+            <https://h5-starsty.com>
+            <https://zh-xingkong.com>
+            <https://xingkong-starsty.com>
+            <https://on-starrysty.com>
+            <https://ios-starrysty.com>
+            <https://in-starrysty.com>
+            <https://ok-starrysty.com>
+            <https://ok-jinnianhui.com>
+            <https://ios-jinnianhui.com>
+            <https://pro-jinnianhui.com>
+            <https://max-jinnianhui.com>
+            <https://min-jinnianhui.com>
+            <https://tiyu-jinnianhui.com>
+            <https://games-jinnianhui.com>
+            <https://ai-jinnianhui.com>
+            <https://on-jinnianhui.com>
+            <https://good-jinnianhui.com>
+            <https://www.h5-biyisports.com>
+            <https://www.blog-biyisports.com>
+            <https://www.pc-biyisports.com>
+            <https://www.cn-biyisports.com>
+            <https://www.3g-biyisports.com>
+            <https://www.5g-biyisports.com>
+            <https://www.biyisports-h5.com>
+            <https://www.biyisports-work.com>
+            <https://www.biyisports-net.com>
+            <https://www.biyisports-pc.com>
+            <https://www.blog-ayxsport.com>
+            <https://www.pc-ayxsport.com>
+            <https://www.ayxsports-wb.com>
+            <https://www.ayxsports-ios.com>
+            <https://www.ios-ayxsports.com>
+            <https://www.mi-ayxsports.com>
+            <https://www.ai-ayxsports.com>
+            <https://www.ayxsports-pro.com>
+            <https://www.ayxsports-min.com>
+            <https://www.ayxsports-max.com>
+            <https://www.mi-bobsports.com>
+            <https://www.ios-bobsports.com>
+            <https://www.pro-bobsports.com>
+            <https://www.max-bobsports.com>
+            <https://www.games-bobsports.com>
+            <https://www.pop-bobsports.com>
+            <https://www.min-bobsports.com>
+            <https://www.blog-bobsports.com>
+            <https://www.net-bobsports.com>
+            <https://www.apps-bobsports.com>
+            <https://www.games-bandaotiyu.com>
+            <https://www.min-bandaotiyu.com>
+            <https://www.pro-bandaotiyu.com>
+            <https://www.max-bandaotiyu.com>
+            <https://www.ios-bandaosports.com>
+            <https://www.ios-bandaotiyu.com>
+            <https://www.pro-bandaosports.com>
+            <https://www.max-bandaosports.com>
+            <https://www.min-bandaosports.com>
+            <https://www.ty-bandaosports.com>
+            <https://www.games-bsports.com>
+            <https://www.ios-bsports.com>
+            <https://www.min-bsports.com>
+            <https://www.max-bsports.com>
+            <https://www.mini-bsports.com>
+            <https://www.bi-bsports.com>
+            <https://www.pro-bsports.com>
+            <https://www.site-bsports.com>
+            <https://www.ty-bsports.com>
+            <https://www.max-hthsports.com>
+            <https://www.on-bsports.com>
+            <https://www.mini-hthsports.com>
+            <https://www.blog-hthsports.com>
+            <https://www.tiyu-hthsports.com>
+            <https://www.pro-hthsports.com>
+            <https://www.3g-hthsports.com>
+            <https://www.5g-hthsports.com>
+            <https://www.in-hthsports.com>
+            <https://www.on-hthsports.com>
+            <https://www.at-hthsports.com>
+            <https://www.at-jnsports.com>
+            <https://www.in-jnsports.com>
+            <https://www.mini-jnsports.com>
+            <https://www.max-jnsports.com>
+            <https://www.pro-jnsports.com>
+            <https://www.tiyu-jnsports.com>
+            <https://www.cq-jnsports.com>
+            <https://www.5g-jnsports.com>
+            <https://www.h5-jnsports.com>
+            <https://www.ios-jnsports.com>
+            <https://www.max-tanqiuba.com>
+            <https://www.play-tanqiuba.com>
+            <https://www.games-tanqiuba.com>
+            <https://www.apps-tanqiuba.com>
+            <https://www.tiyu-tanqiuba.com>
+            <https://www.pro-tanqiuba.com>
+            <https://www.web-tanqiuba.com>
+            <https://www.home-tanqiuba.com>
+            <https://www.5g-tanqiuba.com>
+            <https://www.qmhsports.com>
+            <https://www.ios-tanqiuba.com>
+            <https://www.qmhtiyu.com>
+            <https://www.cn-qmhtiyu.com>
+            <https://www.zh-qmhtiyu.com>
+            <https://www.pro-qmhtiyu.com>
+            <https://www.qmh-qiumenghui.com>
+            <https://www.ty-qiumenghui.com>
+            <https://www.web-qiumenghui.com>
+            <https://www.on-qiumenghui.com>
+            <https://www.in-qiumenghui.com>
+            <https://www.5g-qiuyouhui.com>
+            <https://www.tiyu-qiuyouhui.com>
+            <https://www.play-qiuyouhui.com>
+            <https://www.h5-qiuyouhui.com>
+            <https://www.games-qiuyouhui.com>
+            <https://www.qyh-qiuyouhui.com>
+            <https://www.ios-qiuyouhui.com>
+            <https://www.qianyi-qiuyouhui.com>
+            <https://www.ok-qiuyouhui.com>
+            <https://www.sty-xingkong.com>
+            <https://www.on-qiuyouhui.com>
+            <https://www.xk-starsty.com>
+            <https://www.tiyu-starsty.com>
+            <https://www.h5-starsty.com>
+            <https://www.zh-xingkong.com>
+            <https://www.xingkong-starsty.com>
+            <https://www.on-starrysty.com>
+            <https://www.ios-starrysty.com>
+            <https://www.in-starrysty.com>
+            <https://www.ok-starrysty.com>
+            <https://www.ok-jinnianhui.com>
+            <https://www.ios-jinnianhui.com>
+            <https://www.pro-jinnianhui.com>
+            <https://www.max-jinnianhui.com>
+            <https://www.min-jinnianhui.com>
+            <https://www.tiyu-jinnianhui.com>
+            <https://www.games-jinnianhui.com>
+            <https://www.ai-jinnianhui.com>
+            <https://www.on-jinnianhui.com>
+            <https://www.good-jinnianhui.com>
+            <https://m.h5-biyisports.com>
+            <https://m.blog-biyisports.com>
+            <https://m.pc-biyisports.com>
+            <https://m.cn-biyisports.com>
+            <https://m.3g-biyisports.com>
+            <https://m.5g-biyisports.com>
+            <https://m.biyisports-h5.com>
+            <https://m.biyisports-work.com>
+            <https://m.biyisports-net.com>
+            <https://m.biyisports-pc.com>
+            <https://m.blog-ayxsport.com>
+            <https://m.pc-ayxsport.com>
+            <https://m.ayxsports-wb.com>
+            <https://m.ayxsports-ios.com>
+            <https://m.ios-ayxsports.com>
+            <https://m.mi-ayxsports.com>
+            <https://m.ai-ayxsports.com>
+            <https://m.ayxsports-pro.com>
+            <https://m.ayxsports-min.com>
+            <https://m.ayxsports-max.com>
+            <https://m.mi-bobsports.com>
+            <https://m.ios-bobsports.com>
+            <https://m.pro-bobsports.com>
+            <https://m.max-bobsports.com>
+            <https://m.games-bobsports.com>
+            <https://m.pop-bobsports.com>
+            <https://m.min-bobsports.com>
+            <https://m.blog-bobsports.com>
+            <https://m.net-bobsports.com>
+            <https://m.apps-bobsports.com>
+            <https://m.games-bandaotiyu.com>
+            <https://m.min-bandaotiyu.com>
+            <https://m.pro-bandaotiyu.com>
+            <https://m.max-bandaotiyu.com>
+            <https://m.ios-bandaosports.com>
+            <https://m.ios-bandaotiyu.com>
+            <https://m.pro-bandaosports.com>
+            <https://m.max-bandaosports.com>
+            <https://m.min-bandaosports.com>
+            <https://m.ty-bandaosports.com>
+            <https://m.games-bsports.com>
+            <https://m.ios-bsports.com>
+            <https://m.min-bsports.com>
+            <https://m.max-bsports.com>
+            <https://m.mini-bsports.com>
+            <https://m.bi-bsports.com>
+            <https://m.pro-bsports.com>
+            <https://m.site-bsports.com>
+            <https://m.ty-bsports.com>
+            <https://m.max-hthsports.com>
+            <https://m.on-bsports.com>
+            <https://m.mini-hthsports.com>
+            <https://m.blog-hthsports.com>
+            <https://m.tiyu-hthsports.com>
+            <https://m.pro-hthsports.com>
+            <https://m.3g-hthsports.com>
+            <https://m.5g-hthsports.com>
+            <https://m.in-hthsports.com>
+            <https://m.on-hthsports.com>
+            <https://m.at-hthsports.com>
+            <https://m.at-jnsports.com>
+            <https://m.in-jnsports.com>
+            <https://m.mini-jnsports.com>
+            <https://m.max-jnsports.com>
+            <https://m.pro-jnsports.com>
+            <https://m.tiyu-jnsports.com>
+            <https://m.cq-jnsports.com>
+            <https://m.5g-jnsports.com>
+            <https://m.h5-jnsports.com>
+            <https://m.ios-jnsports.com>
+            <https://m.max-tanqiuba.com>
+            <https://m.play-tanqiuba.com>
+            <https://m.games-tanqiuba.com>
+            <https://m.apps-tanqiuba.com>
+            <https://m.tiyu-tanqiuba.com>
+            <https://m.pro-tanqiuba.com>
+            <https://m.web-tanqiuba.com>
+            <https://m.home-tanqiuba.com>
+            <https://m.5g-tanqiuba.com>
+            <https://m.qmhsports.com>
+            <https://m.ios-tanqiuba.com>
+            <https://m.qmhtiyu.com>
+            <https://m.cn-qmhtiyu.com>
+            <https://m.zh-qmhtiyu.com>
+            <https://m.pro-qmhtiyu.com>
+            <https://m.qmh-qiumenghui.com>
+            <https://m.ty-qiumenghui.com>
+            <https://m.web-qiumenghui.com>
+            <https://m.on-qiumenghui.com>
+            <https://m.in-qiumenghui.com>
+            <https://m.5g-qiuyouhui.com>
+            <https://m.tiyu-qiuyouhui.com>
+            <https://m.play-qiuyouhui.com>
+            <https://m.h5-qiuyouhui.com>
+            <https://m.games-qiuyouhui.com>
+            <https://m.qyh-qiuyouhui.com>
+            <https://m.ios-qiuyouhui.com>
+            <https://m.qianyi-qiuyouhui.com>
+            <https://m.ok-qiuyouhui.com>
+            <https://m.sty-xingkong.com>
+            <https://m.on-qiuyouhui.com>
+            <https://m.xk-starsty.com>
+            <https://m.tiyu-starsty.com>
+            <https://m.h5-starsty.com>
+            <https://m.zh-xingkong.com>
+            <https://m.xingkong-starsty.com>
+            <https://m.on-starrysty.com>
+            <https://m.ios-starrysty.com>
+            <https://m.in-starrysty.com>
+            <https://m.ok-starrysty.com>
+            <https://m.ok-jinnianhui.com>
+            <https://m.ios-jinnianhui.com>
+            <https://m.pro-jinnianhui.com>
+            <https://m.max-jinnianhui.com>
+            <https://m.min-jinnianhui.com>
+            <https://m.tiyu-jinnianhui.com>
+            <https://m.games-jinnianhui.com>
+            <https://m.ai-jinnianhui.com>
+            <https://m.on-jinnianhui.com>
+            <https://m.good-jinnianhui.com>"
+            
+            else
+              echo "Issue for keyword '$keyword' already exists, skipping."
+            fi
+          done
